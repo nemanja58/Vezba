@@ -17,5 +17,94 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Slider container */
+.slider-container {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  margin-top: 0rem;
+  background-color: rgba(240, 240, 240, 0.8); /* Slightly transparent background */
+  padding: 4px; /* Reduced padding for a smaller container */
+  border-radius: 10px; /* Rounded corners for the container */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  width: 15%;
+}
+
+/* Slider wrapper for circular background */
+.slider-wrapper {
+  width: 30px; /* Adjust width based on your design */
+  height: 30px; /* Adjust height based on your design */
+  border-radius: 50%; /* Fully rounded for circular effect */
+  background-color: #f0f0f0; /* Background color for the circle */
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  position: relative; /* Position relative for inner elements */
+  transition: transform 0.3s ease; /* Smooth transition for movement */
+}
+
+/* Hide default checkbox styles */
+input[type="checkbox"].absolute {
+  position: absolute;
+
+}
+
+/* Slider base */
+input[type="checkbox"].absolute + .slider {
+  width: 30px; /* Width of the slider */
+  height: 30px; /* Height of the slider */
+  border-radius: 9999px; /* Fully rounded */
+  background-color: #FF6F61; /* Light gray background */
+  position: absolute; /* Position absolute to allow it to move */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Positioning labels */
+.label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #000; /* Label color */
+  transition: opacity 0.3s ease;
+}
+
+/* Positioning labels */
+.label-f {
+  opacity: 1; /* Show when Fahrenheit is active */
+}
+
+.label-c {
+  opacity: 0; /* Initially hidden */
+}
+
+/* When checked, the slider turns green */
+input[type="checkbox"].absolute:checked + .slider {
+  background-color: #42A5F5; /* Green background when active */
+}
+
+/* Move slider to the right when checked */
+input[type="checkbox"].absolute:checked + .slider {
+  transform: translateX(30px); /* Move the slider to the right */
+}
+
+/* When checked, show Celsius label and hide Fahrenheit */
+input[type="checkbox"].absolute:checked + .slider .label-f {
+  opacity: 0; /* Hide Fahrenheit */
+}
+
+input[type="checkbox"].absolute:checked + .slider .label-c {
+  opacity: 1; /* Show Celsius */
 }
